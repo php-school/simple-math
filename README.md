@@ -1,6 +1,6 @@
-<h1 align="center">Workshop Starter Kit</h1>
+<h1 align="center">Tutorial workshop</h1>
 
-<p align="center">If you want to build your own workshop, this repository and it't tools will help you get going</p>
+<p align="center">This is the workshop from <a href="https://www.phpschool.io/docs#creating-your-own-workshop">https://www.phpschool.io/docs#creating-your-own-workshop</a>.</p>
 
 <p align="center">
   <a href="https://phpschool-team.slack.com/messages">
@@ -9,14 +9,15 @@
 </p>
 ----
 
-## Getting Started
 
 ```shell
-composer create-project php-school/workshop-starter-kit your-workshop-name
+git clone git@github.com:php-school/simple-math.git
+cd simple-math
+composer install
+php bin/simple-math
 ```
 
-That's it! You will be prompted for some information along the way, this will be used to setup the project details in `composer.json`, setup autoloading of your classes and a few other things. A command will be dispayed towards the end of the process which will immediately allow you to run your workshop!
 
 For detailed documentation on how to actually build execrises and extend the application, check the docs page on our site [www.phpschool.io/docs](https://www.phpschool.io/docs).
 
-Finally, drop in the [slack channel](https://phpschool-team.slack.com/messages) if you have further questions. Also send us a PR [here](https://github.com/php-school/phpschool.io) or just drop us a message if you want your workshop featured on www.phpschool.io! 
+Drop in the [slack channel](https://phpschool-team.slack.com/messages) if you have further questions. 
