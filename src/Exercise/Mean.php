@@ -8,8 +8,9 @@ use PhpSchool\PhpWorkshop\Exercise\ExerciseInterface;
 use PhpSchool\PhpWorkshop\Exercise\ExerciseType;
 use PhpSchool\PhpWorkshop\ExerciseDispatcher;
 use PhpSchool\SimpleMath\Check\Psr2Check;
+use PhpSchool\SimpleMath\ExerciseCheck\Psr2ExerciseCheck;
 
-class Mean extends AbstractExercise implements ExerciseInterface, CliExercise
+class Mean extends AbstractExercise implements ExerciseInterface, CliExercise, Psr2ExerciseCheck
 {
 
     /**
@@ -54,5 +55,13 @@ class Mean extends AbstractExercise implements ExerciseInterface, CliExercise
     public function configure(ExerciseDispatcher $dispatcher)
     {
         $dispatcher->requireCheck(Psr2Check::class);
+    }
+
+    /**
+     * @return string
+     */
+    public function getStandard()
+    {
+        return 'PSR2';
     }
 }
