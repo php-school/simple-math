@@ -20,11 +20,13 @@ switch (true) {
 }
 
 use PhpSchool\PhpWorkshop\Application;
+use PhpSchool\SimpleMath\Check\Psr2Check;
 use PhpSchool\SimpleMath\Exercise\Mean;
 
 $app = new Application('Simple Math', __DIR__ . '/config.php');
 
 $app->addExercise(Mean::class);
+$app->addCheck(Psr2Check::class);
 
 $art = <<<ART
   ∞ ÷ ∑ ×
