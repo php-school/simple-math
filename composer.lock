@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d44acb58a9dff5176843b3da979330cd",
-    "content-hash": "eb5fe9382d511f27091b17b7f89623d9",
+    "hash": "c0f10bf666187bec862f285be68cb3d3",
+    "content-hash": "1720381389ed0c8f152f3e0038914928",
     "packages": [
         {
             "name": "aydin-hassan/cli-md-renderer",
@@ -129,6 +129,59 @@
             ],
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
             "time": "2014-12-30 15:22:37"
+        },
+        {
+            "name": "doctrine/couchdb",
+            "version": "1.0.0-beta4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/couchdb-client.git",
+                "reference": "9441f057dc60aff035e150590046c097d8f42fe8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/couchdb-client/zipball/9441f057dc60aff035e150590046c097d8f42fe8",
+                "reference": "9441f057dc60aff035e150590046c097d8f42fe8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Doctrine\\CouchDB": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Lukas Kahwe Smith",
+                    "email": "smith@pooteeweet.org"
+                }
+            ],
+            "description": "CouchDB Client",
+            "homepage": "http://www.doctrine-project.org",
+            "keywords": [
+                "couchdb",
+                "persistence"
+            ],
+            "time": "2015-11-11 20:34:13"
         },
         {
             "name": "fzaninotto/faker",
@@ -574,6 +627,56 @@
             ],
             "description": "A command line menu helper in PHP",
             "time": "2016-01-03 11:32:10"
+        },
+        {
+            "name": "php-school/couch-db-check",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-school/couch-db-check.git",
+                "reference": "e896ba0c54db8e2a11bd7a64b662ad70e88bbe7c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-school/couch-db-check/zipball/e896ba0c54db8e2a11bd7a64b662ad70e88bbe7c",
+                "reference": "e896ba0c54db8e2a11bd7a64b662ad70e88bbe7c",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/couchdb": "^1.0@beta",
+                "php": ">=5.6",
+                "php-school/php-workshop": "^0.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PhpSchool\\CouchDb\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aydin Hassan",
+                    "email": "aydin@hotmail.co.uk"
+                }
+            ],
+            "description": "A Couch DB check to use in your workshops!",
+            "homepage": "https://www.phpschool.io",
+            "keywords": [
+                "cli",
+                "console",
+                "couchdb",
+                "database",
+                "education",
+                "learning",
+                "phpshool",
+                "terminal",
+                "workshop"
+            ],
+            "time": "2016-06-02 17:31:32"
         },
         {
             "name": "php-school/php-workshop",
@@ -1974,7 +2077,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "doctrine/couchdb": 10
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

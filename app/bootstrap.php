@@ -19,12 +19,16 @@ switch (true) {
         throw new RuntimeException('Unable to locate Composer autoloader; please run "composer install".');
 }
 
+use PhpSchool\CouchDb\CouchDbCheck;
 use PhpSchool\PhpWorkshop\Application;
+use PhpSchool\SimpleMath\Exercise\CouchDbExercise;
 use PhpSchool\SimpleMath\Exercise\Mean;
 
 $app = new Application('Simple Math', __DIR__ . '/config.php');
 
 $app->addExercise(Mean::class);
+$app->addExercise(CouchDbExercise::class);
+$app->addCheck(CouchDbCheck::class);
 
 $art = <<<ART
   ∞ ÷ ∑ ×

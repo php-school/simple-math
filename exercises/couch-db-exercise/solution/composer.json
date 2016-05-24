@@ -1,0 +1,7 @@
+{
+    "name": "php-school/couch-db-exercise",
+    "description": "Intro to Couch DB",
+    "require": {
+        "doctrine/couchdb": "^1.0@beta"
+    }
+}
