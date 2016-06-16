@@ -22,11 +22,14 @@ switch (true) {
 use PhpSchool\PhpWorkshop\Application;
 use PhpSchool\SimpleMath\Check\Psr2Check;
 use PhpSchool\SimpleMath\Exercise\Mean;
+use PhpSchool\SimpleMath\Result\CodingStandardFailure;
+use PhpSchool\SimpleMath\ResultRenderer\CodingStandardFailureRenderer;
 
 $app = new Application('Simple Math', __DIR__ . '/config.php');
 
 $app->addExercise(Mean::class);
 $app->addCheck(Psr2Check::class);
+$app->addResult(CodingStandardFailure::class, CodingStandardFailureRenderer::class);
 
 $art = <<<ART
   ∞ ÷ ∑ ×

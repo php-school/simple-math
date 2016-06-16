@@ -5,10 +5,10 @@ namespace PhpSchool\SimpleMath\Check;
 use PhpSchool\PhpWorkshop\Check\SimpleCheckInterface;
 use PhpSchool\PhpWorkshop\Exercise\ExerciseInterface;
 use PhpSchool\PhpWorkshop\Exercise\ExerciseType;
-use PhpSchool\PhpWorkshop\ExerciseCheck\FunctionRequirementsExerciseCheck;
 use PhpSchool\PhpWorkshop\Result\Failure;
 use PhpSchool\PhpWorkshop\Result\Success;
 use PhpSchool\SimpleMath\ExerciseCheck\Psr2ExerciseCheck;
+use PhpSchool\SimpleMath\Result\CodingStandardFailure;
 
 class Psr2Check implements SimpleCheckInterface
 {
@@ -41,14 +41,19 @@ class Psr2Check implements SimpleCheckInterface
         }
 
         $phpCsBinary = __DIR__ . '/../../vendor/bin/phpcs';
-        $cmd = sprintf('%s %s --standard=%s', $phpCsBinary, $fileName, $standard);
+        $cmd = sprintf('%s %s --standard=%s --report=json', $phpCsBinary, $fileName, $standard);
         exec($cmd, $output, $exitCode);
 
         if ($exitCode === 0) {
             return new Success($this->getName());
         }
 
-        return new Failure($this->getName(), 'Coding style did not conform to PSR2!');
+        $errors = json_decode($output[0], true)['files'][$fileName];
+        $errors = array_map(function ($error) {
+            return sprintf('Line %d, Column %d: %s', $error['line'], $error['column'], $error['message']);
+        }, $errors['messages']);
+
+        return CodingStandardFailure::fromCheckAndOutput($this, $standard, $errors);
     }
 
     public function getPosition()
