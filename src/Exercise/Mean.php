@@ -6,6 +6,8 @@ use PhpSchool\PhpWorkshop\Exercise\AbstractExercise;
 use PhpSchool\PhpWorkshop\Exercise\CliExercise;
 use PhpSchool\PhpWorkshop\Exercise\ExerciseInterface;
 use PhpSchool\PhpWorkshop\Exercise\ExerciseType;
+use PhpSchool\PhpWorkshop\ExerciseDispatcher;
+use PhpSchool\SimpleMath\Check\Psr2Check;
 
 class Mean extends AbstractExercise implements ExerciseInterface, CliExercise
 {
@@ -31,14 +33,14 @@ class Mean extends AbstractExercise implements ExerciseInterface, CliExercise
      */
     public function getArgs()
     {
-        $numArgs = rand(0, 10);
+        $numArgs = rand(1, 10);
 
         $args = [];
         for ($i = 0; $i < $numArgs; $i ++) {
             $args[] = rand(0, 100);
         }
 
-        return $args;
+        return [$args];
     }
 
     /**
@@ -47,5 +49,10 @@ class Mean extends AbstractExercise implements ExerciseInterface, CliExercise
     public function getType()
     {
         return ExerciseType::CLI();
+    }
+
+    public function configure(ExerciseDispatcher $dispatcher)
+    {
+        $dispatcher->requireCheck(Psr2Check::class);
     }
 }
