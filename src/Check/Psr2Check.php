@@ -5,7 +5,7 @@ namespace PhpSchool\SimpleMath\Check;
 use PhpSchool\PhpWorkshop\Check\SimpleCheckInterface;
 use PhpSchool\PhpWorkshop\Exercise\ExerciseInterface;
 use PhpSchool\PhpWorkshop\Exercise\ExerciseType;
-use PhpSchool\PhpWorkshop\ExerciseCheck\FunctionRequirementsExerciseCheck;
+use PhpSchool\PhpWorkshop\Input\Input;
 use PhpSchool\PhpWorkshop\Result\Failure;
 use PhpSchool\PhpWorkshop\Result\Success;
 use PhpSchool\SimpleMath\ExerciseCheck\Psr2ExerciseCheck;
@@ -25,10 +25,10 @@ class Psr2Check implements SimpleCheckInterface
 
     public function canRun(ExerciseType $exerciseType)
     {
-        return true;
+        return in_array($exerciseType->getValue(), [ExerciseType::CGI, ExerciseType::CLI]);
     }
 
-    public function check(ExerciseInterface $exercise, $fileName)
+    public function check(ExerciseInterface $exercise, Input $input)
     {
         if (!$exercise instanceof Psr2ExerciseCheck) {
             throw new \InvalidArgumentException;
@@ -41,7 +41,7 @@ class Psr2Check implements SimpleCheckInterface
         }
 
         $phpCsBinary = __DIR__ . '/../../vendor/bin/phpcs';
-        $cmd = sprintf('%s %s --standard=%s', $phpCsBinary, $fileName, $standard);
+        $cmd = sprintf('%s %s --standard=%s', $phpCsBinary, $input->getArgument('program'), $standard);
         exec($cmd, $output, $exitCode);
 
         if ($exitCode === 0) {
