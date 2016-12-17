@@ -35,14 +35,14 @@ class Mean extends AbstractExercise implements ExerciseInterface, CliExercise, S
      */
     public function getArgs()
     {
-        $numArgs = rand(0, 10);
+        $numArgs = rand(1, 10);
 
         $args = [];
         for ($i = 0; $i < $numArgs; $i ++) {
             $args[] = rand(0, 100);
         }
 
-        return $args;
+        return [$args];
     }
 
     /**
