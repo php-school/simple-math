@@ -7,6 +7,7 @@ use PhpSchool\PhpWorkshop\Exercise\CliExercise;
 use PhpSchool\PhpWorkshop\Exercise\ExerciseInterface;
 use PhpSchool\PhpWorkshop\Exercise\ExerciseType;
 use PhpSchool\PhpWorkshop\ExerciseCheck\SelfCheck;
+use PhpSchool\PhpWorkshop\Input\Input;
 use PhpSchool\PhpWorkshop\Result\Failure;
 use PhpSchool\PhpWorkshop\Result\ResultInterface;
 use PhpSchool\PhpWorkshop\Result\Success;
@@ -54,13 +55,13 @@ class Mean extends AbstractExercise implements ExerciseInterface, CliExercise, S
     }
 
     /**
-     * @param string $fileName
+     * @param Input $input
      * @return ResultInterface
      */
-    public function check($fileName)
+    public function check(Input $input)
     {
         $phpCsBinary = __DIR__ . '/../../vendor/bin/phpcs';
-        $cmd = sprintf('%s %s --standard=PSR2', $phpCsBinary, $fileName);
+        $cmd = sprintf('%s %s --standard=PSR2', $phpCsBinary, $input->getArgument('program'));
         exec($cmd, $output, $exitCode);
 
         if ($exitCode === 0) {
